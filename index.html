@@ -181,35 +181,6 @@
 
 
 
-        /* ===== VIEW BADGE ===== */
-
-        #view-badge {
-
-            position: fixed;
-
-            top: 100px;
-
-            right: 20px;
-
-            background: rgba(0, 0, 0, .75);
-
-            padding: 8px 16px;
-
-            border-radius: 20px;
-
-            font-size: 14px;
-
-            display: flex;
-
-            gap: 6px;
-
-            z-index: 2500;
-
-            box-shadow: 0 0 12px rgba(0, 255, 204, .5)
-        }
-
-
-
         /* ===== HERO ===== */
 
         header {
@@ -896,9 +867,7 @@
 
 
 
-    <!-- VIEW BADGE -->
 
-    <div id="view-badge">👁 <span id="view-count">0</span> Views</div>
 
 
 
@@ -1252,15 +1221,7 @@
 
 
 
-        /* View counter */
 
-        let views = localStorage.getItem("techguru_views");
-
-        views = views ? parseInt(views) + 1 : 1;
-
-        localStorage.setItem("techguru_views", views);
-
-        document.getElementById("view-count").innerText = views;
 
     </script>
 
