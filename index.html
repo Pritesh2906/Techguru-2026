@@ -17,6 +17,24 @@
 
 
     <style>
+        /* ===== THEME VARIABLES ===== */
+        :root {
+            --bg-main: radial-gradient(circle at top, #184b45, #050b0b);
+            --text-main: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --accent: #00ffcc;
+            --nav-bg: rgba(0, 0, 0, 0.45);
+        }
+
+        /* Light mode */
+        body.light {
+            --bg-main: #f8fafc;
+            --text-main: #0f172a;
+            --card-bg: #ffffff;
+            --accent: #0f766e;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+        }
+
         * {
 
             margin: 0;
@@ -38,12 +56,9 @@
 
 
         body {
-
-            background: radial-gradient(circle at top, #184b45, #050b0b);
-
-            color: #fff;
-
-            overflow-x: hidden
+            background: var(--bg-main);
+            color: var(--text-main);
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
 
@@ -335,7 +350,7 @@
 
         .event-card {
 
-            background: rgba(255, 255, 255, .08);
+            background: var(--card-bg);
 
             border-radius: 22px;
 
@@ -821,6 +836,20 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            #theme-toggle {
+                background: none;
+                border: none;
+                font-size: 20px;
+                margin-left: 18px;
+                cursor: pointer;
+                color: var(--accent);
+                transition: transform 0.3s ease;
+            }
+
+            #theme-toggle:hover {
+                transform: rotate(20deg);
+            }
         }
     </style>
 
@@ -832,7 +861,7 @@
 
         <div id="instruction-text">
 
-            📢 Important Instructions: Carry College ID • Online registration mandatory • Report 30 minutes early 📢
+            📢 Important Instructions: Carry College ID • Online registration mandatory • Report 30 minutes early📢
 
         </div>
 
@@ -860,6 +889,8 @@
             <a href="#sponsors">Sponsors</a>
 
             <a href="#faq">FAQ</a>
+
+            <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
 
         </div>
 
@@ -1219,7 +1250,22 @@
 
         };
 
+        /* ===== THEME TOGGLE ===== */
+        const toggleBtn = document.getElementById("theme-toggle");
+        const savedTheme = localStorage.getItem("theme");
 
+        if (savedTheme === "light") {
+            document.body.classList.add("light");
+            toggleBtn.textContent = "☀️";
+        }
+
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("light");
+
+            const isLight = document.body.classList.contains("light");
+            toggleBtn.textContent = isLight ? "☀️" : "🌙";
+            localStorage.setItem("theme", isLight ? "light" : "dark");
+        });
 
 
 
@@ -1228,4 +1274,3 @@
 </body>
 
 </html>
-
