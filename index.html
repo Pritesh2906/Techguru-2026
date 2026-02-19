@@ -414,6 +414,38 @@
         }
     </style>
 </head>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+    // 🔹 Your Firebase config (PASTE YOURS HERE)
+    const firebaseConfig = {
+        apiKey: "AIzaSyC5NgBZUYupn2FAktZjlkNN5O7vgCMRxEs",
+        authDomain: "techguru-visitor-counter.firebaseapp.com",
+        projectId: "techguru-visitor-counter",
+        storageBucket: "techguru-visitor-counter.firebasestorage.app",
+        messagingSenderId: "669293400490",
+        appId: "1:669293400490:web:5a4890978cd17caee15bd3"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Reference to visitor count
+    const visitorRef = database.ref("visitors");
+
+    // Increment visitor count atomically
+    visitorRef.transaction((currentValue) => {
+        return (currentValue || 0) + 1;
+    });
+
+    // Listen for live updates
+    visitorRef.on("value", (snapshot) => {
+        document.getElementById("view-count").innerText = snapshot.val();
+    });
+</script>
 
 <body> <!-- INSTRUCTION BAR -->
     <div id="instruction-bar">
