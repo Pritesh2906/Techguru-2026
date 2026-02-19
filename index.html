@@ -414,38 +414,6 @@
         }
     </style>
 </head>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-<script>
-    // 🔹 Your Firebase config (PASTE YOURS HERE)
-    const firebaseConfig = {
-        apiKey: "AIzaSyC5NgBZUYupn2FAktZjlkNN5O7vgCMRxEs",
-        authDomain: "techguru-visitor-counter.firebaseapp.com",
-        projectId: "techguru-visitor-counter",
-        storageBucket: "techguru-visitor-counter.firebasestorage.app",
-        messagingSenderId: "669293400490",
-        appId: "1:669293400490:web:5a4890978cd17caee15bd3"
-    };
-
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-
-    // Reference to visitor count
-    const visitorRef = database.ref("visitors");
-
-    // Increment visitor count atomically
-    visitorRef.transaction((currentValue) => {
-        return (currentValue || 0) + 1;
-    });
-
-    // Listen for live updates
-    visitorRef.on("value", (snapshot) => {
-        document.getElementById("view-count").innerText = snapshot.val();
-    });
-</script>
 
 <body> <!-- INSTRUCTION BAR -->
     <div id="instruction-bar">
@@ -459,7 +427,7 @@
         </div>
 
     </nav> <!-- VIEW BADGE -->
-    <div id="view-badge">👁 <span id="view-count">0</span> Views</div> <!-- HERO -->
+
     <header>
         <div class="logo-wrapper"><img src="logo.png"></div>
         <h1>TECHGURU 2026</h1>
@@ -557,57 +525,7 @@
                 Developed &amp; maintained by <a href="https://www.linkedin.com/in/pritesh-jamdhade-4a4b52320/"
                     target="_blank"> Pritesh Jamdhade</a> </span> </div>
     </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-
-            /* ===== COUNTDOWN ===== */
-            const eventDate = new Date("March 28, 2026 09:00:00").getTime();
-            setInterval(() => {
-                const now = Date.now();
-                const d = eventDate - now;
-                if (d < 0) return;
-
-                document.getElementById("days").innerText =
-                    Math.floor(d / (1000 * 60 * 60 * 24));
-                document.getElementById("hours").innerText =
-                    Math.floor((d / (1000 * 60 * 60)) % 24);
-                document.getElementById("minutes").innerText =
-                    Math.floor((d / (1000 * 60)) % 60);
-                document.getElementById("seconds").innerText =
-                    Math.floor((d / 1000) % 60);
-            }, 1000);
-
-            /* ===== FAQ TOGGLE ===== */
-            document.querySelectorAll(".faq-item").forEach(item => {
-                item.addEventListener("click", () => {
-                    item.classList.toggle("active");
-                });
-            });
-
-            /* ===== CLOSE INSTRUCTION BAR ===== */
-            const closeBtn = document.getElementById("close-instruction");
-            if (closeBtn) {
-                closeBtn.onclick = () => {
-                    document.getElementById("instruction-bar").style.display = "none";
-                    document.querySelector("nav").style.top = "0";
-                };
-            }
-
-            /* ===== VISITOR COUNTER (100% WORKING) ===== */
-            let visits = localStorage.getItem("techguru_visits");
-
-            if (!visits) {
-                visits = Math.floor(Math.random() * 20) + 10; // start from realistic number
-            } else {
-                visits = parseInt(visits) + 1;
-            }
-
-            localStorage.setItem("techguru_visits", visits);
-            document.getElementById("view-count").innerText = visits;
-
-        });
-    </script>
-
+    <script> /* Countdown */ const eventDate = new Date("March 28, 2026 09:00:00").getTime(); setInterval(() => { const now = new Date().getTime(); const d = eventDate - now; if (d < 0) return; days.innerText = Math.floor(d / (1000 * 60 * 60 * 24)); hours.innerText = Math.floor((d / (1000 * 60 * 60)) % 24); minutes.innerText = Math.floor((d / (1000 * 60)) % 60); seconds.innerText = Math.floor((d / 1000) % 60); }, 1000); /* FAQ toggle */ document.querySelectorAll(".faq-item").forEach(item => { item.onclick = () => item.classList.toggle("active"); }); /* Close instruction */ document.getElementById("close-instruction").onclick = () => { document.getElementById("instruction-bar").style.display = "none"; document.querySelector("nav").style.top = "0"; };  </script>
 </body>
 
 </html>
