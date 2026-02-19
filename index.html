@@ -760,22 +760,96 @@
 
 
 
-        @media(max-width:768px) {
+        @media (max-width: 768px) {
+
+            /* ===== NAVBAR (MOBILE) ===== */
+            nav {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 5%;
+                text-align: center;
+            }
+
+            nav h3 {
+                font-size: 18px;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 13px;
+            }
+
+            /* ===== INSTRUCTION BAR (MOBILE) ===== */
+            #instruction-bar {
+                height: 36px;
+                font-size: 13px;
+            }
+
+            #instruction-text {
+                animation-duration: 25s;
+                padding-left: 120%;
+            }
+
+            /* ===== VIEW BADGE (MOBILE) ===== */
+            #view-badge {
+                top: 90px;
+                right: 50%;
+                transform: translateX(50%);
+                font-size: 13px;
+                padding: 6px 14px;
+            }
+
+            /* ===== HERO SECTION ===== */
+            header {
+                padding-top: 170px;
+            }
 
             header h1 {
-
-                font-size: 40px
+                font-size: 34px;
+                letter-spacing: 1.5px;
             }
 
+            header p {
+                font-size: 13px;
+                padding: 0 10px;
+            }
 
+            .logo-wrapper img {
+                width: 180px;
+                height: 180px;
+            }
 
+            /* ===== COUNTDOWN ===== */
+            #countdown {
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            #countdown div {
+                min-width: 70px;
+                padding: 10px;
+            }
+
+            /* ===== SECTIONS ===== */
+            section {
+                padding: 70px 6%;
+            }
+
+            h2 {
+                font-size: 30px;
+                margin-bottom: 40px;
+            }
+
+            /* ===== EVENTS ===== */
+            .event-card img {
+                height: 200px;
+            }
+
+            /* ===== FOOTER ===== */
             .footer-bottom {
-
+                flex-direction: column;
                 text-align: center;
-
-                flex-direction: column
             }
-
         }
     </style>
 
